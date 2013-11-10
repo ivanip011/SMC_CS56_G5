@@ -1,13 +1,15 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Panel;
 import java.awt.image.BufferedImage;
-
 import javax.swing.JPanel;
 
 
+//a basic image panel;
 
 public class WHQPanel extends JPanel{
+
+	private static final long serialVersionUID = -2967321735758471119L;
+
 	private BufferedImage image;
 
 	final static public int IMAGE_FIT_SIZE = 1;

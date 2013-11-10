@@ -12,10 +12,11 @@ import javax.swing.JButton;
 
 public class FunctionButton extends JButton implements MouseListener{
 	
+	private static final long serialVersionUID = 5745373212707708530L;
+	
 	private BufferedImage image_normal;
 	private BufferedImage image_selected;
-	private Point orignalLocation;
-	private Point scaledLocation;
+	private ControllerFrame controller;
 	final private float scaleSizeChange = -0.2f;
 	
 	private int buttonType;
@@ -28,18 +29,21 @@ public class FunctionButton extends JButton implements MouseListener{
 	final private int SELECTED = 2;
 	final private int SCALED = 3;
 	
-	public FunctionButton(Dimension size,Point locationPoint,int type) {
+	public FunctionButton(Dimension size,Point locationPoint,int type,ControllerFrame c) {
 		// TODO Auto-generated constructor stub
 		setBorderPainted(false);
 		setSize(size);
 		setLocation(locationPoint);
 		buttonType = type;
+		setContainer(c);
 		assignImages();
 		addMouseListener(this);
 		setImageIconAndPosition(NORMAL);
 	}
 	
-	
+	public void setContainer(ControllerFrame c) {
+		controller = c;
+	}
 	
 	private void assignImages() {
 		switch (buttonType) {
@@ -94,14 +98,13 @@ public class FunctionButton extends JButton implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println(this + " mouseCliecked");
+		//System.out.println(this + " mouseCliecked");
+		controller.functionButtonClicked(this.buttonType);
 	}
-
 
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		System.out.println(this + " mouseEntered");
 		setImageIconAndPosition(SELECTED);
 	}
@@ -110,7 +113,6 @@ public class FunctionButton extends JButton implements MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		System.out.println(this + " mouseExited");
 		setImageIconAndPosition(NORMAL);
 	}
@@ -119,7 +121,6 @@ public class FunctionButton extends JButton implements MouseListener{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		System.out.println(this + " mousePressed");
 		setImageIconAndPosition(SCALED);
 	}
@@ -128,7 +129,6 @@ public class FunctionButton extends JButton implements MouseListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		System.out.println(this + " mouseReleased");
 		setImageIconAndPosition(SELECTED);
 	}
