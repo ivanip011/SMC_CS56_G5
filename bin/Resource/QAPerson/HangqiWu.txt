@@ -1,5 +1,0 @@
-40 80
-what's your name?
-Hangqi Wu
-How old are you?
-21

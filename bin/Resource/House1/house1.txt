@@ -1,3 +1,0 @@
-ture
-room1
-room2
